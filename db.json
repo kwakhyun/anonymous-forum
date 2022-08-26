@@ -1,23 +1,45 @@
 {
-  "api": {
-    "posts": [
-      {
-        "post_id": 1,
-        "nickname": "이름",
-        "password": "비밀번호",
-        "date": "작성일",
-        "title": "제목",
-        "content": "내용",
-        "comments": [
-          {
-            "comment_id": 1,
-            "comment": "댓글",
-            "nickname": "닉네임",
-            "password": "패스워드",
-            "date": "작성일"
-          }
-        ]
-      }
-    ]
-  }
+  "posts": [
+    {
+      "id": 1,
+      "nickname": "이름",
+      "password": "비밀번호",
+      "date": "작성일",
+      "title": "제목",
+      "content": "내용"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "list": [
+        {
+          "id": 1,
+          "comment": "댓글",
+          "nickname": "닉네임",
+          "password": "패스워드",
+          "date": "작성일"
+        },
+        {
+          "id": 2,
+          "comment": "댓글2",
+          "nickname": "닉네임2",
+          "password": "패스워드2",
+          "date": "작성일2"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "list": [
+        {
+          "id": 1,
+          "comment": "댓글",
+          "nickname": "닉네임",
+          "password": "패스워드",
+          "date": "작성일"
+        }
+      ]
+    }
+  ]
 }

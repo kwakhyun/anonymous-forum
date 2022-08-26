@@ -1,1 +1,1 @@
-export { default as useGetPost } from "./useGetPost";
+export { default as useGetData } from "./useGetData";
