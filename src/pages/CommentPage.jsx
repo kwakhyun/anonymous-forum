@@ -1,12 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useGetPost } from "../hook";
+import { CommentList } from "../components";
 
-const DetailPage = () => {
+const CommentPage = () => {
   const { id } = useParams();
-  const value = useGetPost(id);
-  console.log(value);
-
-  return <div>{id}</div>;
+  return <CommentList id={id}></CommentList>;
 };
 
-export default DetailPage;
+export default CommentPage;

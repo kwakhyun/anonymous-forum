@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useGetPost } from "../hook";
+import { useGetData } from "../hook";
 
-const DetailPage = () => {
+const PostPage = () => {
   const { id } = useParams();
-  const value = useGetPost(id);
+  const value = useGetData(id);
   console.log(value);
 
   return <div>{id}</div>;
 };
 
-export default DetailPage;
+export default PostPage;

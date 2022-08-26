@@ -7,16 +7,15 @@ import { useEffect, useState } from "react";
  * title : "제목"
  * content : "내용"
  */
-const useGetPost = (id) => {
-  const [url, setUrl] = useState(`/api/posts/${id}`);
+const useGetData = (table, id) => {
+  const [url, setUrl] = useState(`http://localhost:3001/${table}/${id}`);
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    const getData = () => axios.get(url).then((data) => setValue(data));
-    getData();
+    axios.get(url).then((data) => setValue(data));
   }, [url]);
 
   return [value];
 };
 
-export default useGetPost;
+export default useGetData;
