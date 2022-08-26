@@ -1,27 +1,35 @@
 {
   "posts": [
     {
-      "id": "91e5b547-6aed-479a-8c08-f3dd481230be",
-      "nickname": "dddd",
-      "password": "dddddd",
-      "title": "dddd",
-      "content": "dddddd",
+      "id": "0ab5fc11-0a27-4939-99a6-2e8a4c33fdb0",
+      "nickname": "qq",
+      "password": "qq",
+      "title": "qq",
+      "content": "qq",
       "date": "2022년 08월 26일"
     },
     {
-      "id": "4630295b-9e6f-4c7d-916a-efc2b4b6577a",
-      "nickname": "zxcxz",
-      "password": "czxxzc",
-      "title": "zxczx",
-      "content": "czxxzc",
+      "id": "09de8193-a618-495b-98cd-4ef5627370e6",
+      "nickname": "ww",
+      "password": "ww",
+      "title": "ww",
+      "content": "ww",
       "date": "2022년 08월 26일"
     },
     {
-      "id": "72ff206f-bf32-4012-b465-d2d06dcef651",
-      "nickname": "xx",
-      "password": "xx",
-      "title": "xx",
-      "content": "xx",
+      "id": "88a3a493-2b9e-4d98-ba76-09efe466013f",
+      "nickname": "ee",
+      "password": "ee",
+      "title": "ee",
+      "content": "ee",
+      "date": "2022년 08월 26일"
+    },
+    {
+      "id": "f2c57fa3-4c21-43f8-93bc-247507a1dc43",
+      "nickname": "rr",
+      "password": "rr",
+      "title": "rr",
+      "content": "rr",
       "date": "2022년 08월 26일"
     }
   ],

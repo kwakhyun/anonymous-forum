@@ -5,9 +5,13 @@ import styled from "styled-components";
 import { Posts } from "../components/Posts";
 import { Search } from "../components/Search";
 // import { useGetPost } from "../hook";
+import { useSelector, useDispatch } from "react-redux";
+import { getPost } from "../redux/modules/postSlice";
 
 const MainPage = () => {
   // const posts = useGetPost("");
+  const postList = useSelector((store) => store.post.posts);
+  const dispatch = useDispatch();
 
   const [list, setList] = useState();
   const [searched, setSearched] = useState();
@@ -87,7 +91,7 @@ const MainPage = () => {
     },
   });
 
-  const postList = posts.api.posts;
+  // const postList = posts.api.posts;
   //let searched = {};
 
   //TODO: case 문 짧게 / 검색 결과 없을때 알림, 전체 보기
@@ -117,6 +121,10 @@ const MainPage = () => {
     console.log("list > ", list);
   }, [list]);
 
+  useEffect(() => {
+    dispatch(getPost());
+  }, []);
+
   const searchPost = (search) => {
     const { select, input } = search;
     if (input === "") {
@@ -136,7 +144,7 @@ const MainPage = () => {
           <p>최신 순 | 오래된 순</p>
           <PostList>
             {postList.map((post) => {
-              return <Posts post={post} key={post.post_id} />;
+              return <Posts post={post} key={post.id} />;
             })}
           </PostList>
         </PostsContainer>
