@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { MainButton } from "../MainButton";
+import MainButton from "../mainButton/MainButton";
 // import { img_home } from "../../public/home_icon.png";
 import img_home from "./home_icon.png";
 
@@ -9,7 +9,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const goToPost = () => {
-    navigate("/api/post");
+    navigate("/post");
   };
   const goToHome = () => {
     navigate("/");

@@ -1,12 +1,28 @@
 {
   "posts": [
     {
-      "id": 1,
-      "nickname": "이름",
-      "password": "비밀번호",
-      "date": "작성일",
-      "title": "제목",
-      "content": "내용"
+      "id": "91e5b547-6aed-479a-8c08-f3dd481230be",
+      "nickname": "dddd",
+      "password": "dddddd",
+      "title": "dddd",
+      "content": "dddddd",
+      "date": "2022년 08월 26일"
+    },
+    {
+      "id": "4630295b-9e6f-4c7d-916a-efc2b4b6577a",
+      "nickname": "zxcxz",
+      "password": "czxxzc",
+      "title": "zxczx",
+      "content": "czxxzc",
+      "date": "2022년 08월 26일"
+    },
+    {
+      "id": "72ff206f-bf32-4012-b465-d2d06dcef651",
+      "nickname": "xx",
+      "password": "xx",
+      "title": "xx",
+      "content": "xx",
+      "date": "2022년 08월 26일"
     }
   ],
   "comments": [

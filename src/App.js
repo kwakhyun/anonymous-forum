@@ -1,10 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { PostPage, MainPage, CommentPage } from "./pages";
+import { MainPage, PostPage, DetailPage, CommentPage } from "./pages";
+
 function App() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />
-      <Route path="/posts/:id" element={<PostPage />} />
+      <Route path="post/" element={<PostPage />} />
+      <Route path="detail/:id" element={<DetailPage />} />
       <Route path="/comments/:id" element={<CommentPage />} />
     </Routes>
   );

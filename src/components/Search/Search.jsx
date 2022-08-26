@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { MainButton } from "../MainButton";
+import MainButton from "../mainButton/MainButton";
 
 const Search = ({ searchPost }) => {
   const [search, setSearch] = useState({ select: "", input: "" });
