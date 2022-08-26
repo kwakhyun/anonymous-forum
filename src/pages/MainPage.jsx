@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MainButton } from "../components";
 import { Header } from "../components/Header";
 import styled from "styled-components";
 import { Posts } from "../components/Posts";
+import { Search } from "../components/Search";
 // import { useGetPost } from "../hook";
 
 const MainPage = () => {
   // const posts = useGetPost("");
 
+  const [list, setList] = useState();
+  const [searched, setSearched] = useState();
   const [posts, setPosts] = useState({
     api: {
       posts: [
@@ -83,19 +86,61 @@ const MainPage = () => {
       ],
     },
   });
+
+  const postList = posts.api.posts;
+  //let searched = {};
+
+  //TODO: case 문 짧게 / 검색 결과 없을때 알림, 전체 보기
+  const getSearched = (select, input) => {
+    switch (select) {
+      case "title":
+        setSearched(postList.filter((post) => post.title.includes(input)));
+        break;
+      case "content":
+        setSearched(postList.filter((post) => post.content.includes(input)));
+        break;
+      case "nickname":
+        setSearched(postList.filter((post) => post.nickname.includes(input)));
+        break;
+      default:
+        return console.error;
+    }
+    // setList(searched);
+  };
+
+  useEffect(() => {
+    setList(searched);
+    console.log("searched > ", searched);
+  }, [searched]);
+
+  useEffect(() => {
+    console.log("list > ", list);
+  }, [list]);
+
+  const searchPost = (search) => {
+    const { select, input } = search;
+    if (input === "") {
+      alert("검색어를 입력하세요");
+      return;
+    }
+    getSearched(select, input);
+    // Object.keys(list).map((key) => console.log("하하핳>", list[key]));
+  };
+
   return (
     <>
       <Header />
       <MainPageContainer>
         <PostsContainer>
+          {/* TODO: 필터 레이아웃 수정 */}
+          <p>최신 순 | 오래된 순</p>
           <PostList>
-            {posts.api.posts.map((post) => {
+            {postList.map((post) => {
               return <Posts post={post} key={post.post_id} />;
             })}
           </PostList>
         </PostsContainer>
-        {/* <MainButton onClick={() => alert("메인기능 발생")}>메인화면</MainButton>
-    <MainButton>메인페이지 Test</MainButton> */}
+        <Search searchPost={searchPost} />
       </MainPageContainer>
     </>
   );
@@ -109,10 +154,10 @@ const PostList = styled.div`
 
 const PostsContainer = styled.div`
   align-items: center;
-  height: 80vh;
+  height: 80vh; // TODO: 전체 높이 수정 조정
   width: 70%;
   padding: 1em 2em 1em 2em;
-  background-color: gray;
+  /* background-color: gray; */
   box-sizing: border-box;
 `;
 
