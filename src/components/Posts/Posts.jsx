@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Posts = ({ post }) => {
-  const { post_id, nickname, password, date, title, content, commtents } = post;
+  const { id, nickname, password, date, title, content, commtents } = post;
   const navigate = useNavigate();
   const goToDeatil = () => {
-    navigate(`/api/posts/${post_id}`);
+    navigate(`/posts/${post.id}`);
   };
   return (
     <PostContainer onClick={goToDeatil}>
-      <PostId>{post_id}</PostId>
+      <PostId>{id}</PostId>
       <PostTitle>{title}</PostTitle>
       <PostNickname>{nickname}</PostNickname>
       <PostDate>{date}</PostDate>
