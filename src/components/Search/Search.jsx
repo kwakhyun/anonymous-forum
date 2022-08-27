@@ -52,8 +52,10 @@ const Search = ({ searchPost }) => {
 
 const SearchContainer = styled.div`
   display: flex;
-  width: 50%;
+  width: 40%;
   margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  bottom: 0;
 `;
 
 const SearchSelect = styled.select`
@@ -62,7 +64,7 @@ const SearchSelect = styled.select`
 `;
 
 const SearchInput = styled.input`
-  flex: 1 1 70%;
+  flex: 1 1 80%;
   margin-right: 1em;
 `;
 

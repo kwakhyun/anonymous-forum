@@ -38,12 +38,13 @@ const PostTitle = styled.div`
   flex: 1 1 70%;
 `;
 const PostNickname = styled.div`
-  flex: 1 1 5%;
+  flex: 1 1 10%;
   text-align: right;
   margin-right: 1em;
 `;
 const PostDate = styled.div`
-  flex: 1 1 20%;
+  flex: 1 1 15%;
+  text-align: center;
 `;
 
 export default Posts;

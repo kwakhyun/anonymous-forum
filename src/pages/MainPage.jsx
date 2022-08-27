@@ -49,10 +49,12 @@ const MainPage = () => {
   };
 
   return (
-    <>
-      <Header />
+    <MainPageLayout>
       <MainPageContainer>
-        <p>최신 순 | 오래된 순</p>
+        <div>
+          <Header />
+        </div>
+        <Sort>최신 순 | 오래된 순</Sort>
         <PostsContainer>
           {/* TODO: 필터 레이아웃 수정 */}
           <PostList>
@@ -62,23 +64,36 @@ const MainPage = () => {
               })}
           </PostList>
         </PostsContainer>
-        <Search searchPost={searchPost} />
+        <SearchBox>
+          <Search searchPost={searchPost} />
+        </SearchBox>
       </MainPageContainer>
-    </>
+    </MainPageLayout>
   );
 };
 
+const MainPageLayout = styled.div`
+  height: 100vh;
+`;
+
 const MainPageContainer = styled.div`
-  height: 50%; // TODO: 전체 높이 수정 조정
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
+const Sort = styled.div`
+  width: 70%;
+  text-align: right;
+  padding: 1em 0 1em 0;
+`;
+
 const PostsContainer = styled.div`
   align-items: center;
   width: 70%;
+  height: 100%;
   padding: 1em 2em 1em 2em;
   /* background-color: gray; */
   box-sizing: border-box;
@@ -89,6 +104,12 @@ const PostList = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 100%;
+`;
+
+const SearchBox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `;
 
 export default MainPage;
