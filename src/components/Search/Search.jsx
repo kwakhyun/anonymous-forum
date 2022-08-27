@@ -25,7 +25,6 @@ const Search = ({ searchPost }) => {
 
   useEffect(() => {
     inputRef.current.addEventListener("keypress", logKey);
-
     function logKey(event) {
       if (event.code === "Enter") {
         searchPost(search);

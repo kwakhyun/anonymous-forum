@@ -11,10 +11,16 @@ const MainPage = () => {
   const postList = useSelector((store) => store.post.posts);
   const [searched, setSearched] = useState();
   const dispatch = useDispatch();
+  // let refresh = 0;
 
   useEffect(() => {
     dispatch(getPost());
   }, []);
+
+  useEffect(() => {
+    setSearched(postList);
+    // refresh = 0;
+  }, [postList]);
 
   const searchPost = (search) => {
     const { select, input } = search;
@@ -25,20 +31,16 @@ const MainPage = () => {
     getSearched(select, input);
   };
 
-  useEffect(() => {
-    setSearched(postList);
-  }, [postList]);
-
   const getSearched = (select, input) => {
     setSearched(
       postList.filter((post) => {
         switch (select) {
           case "title":
-            return post.title.includes(input);
+            return post.title.toUpperCase().includes(input.toUpperCase());
           case "content":
-            return post.content.includes(input);
+            return post.content.toUpperCase().includes(input.toUpperCase());
           case "nickname":
-            return post.nickname.includes(input);
+            return post.nickname.toUpperCase().includes(input.toUpperCase());
           default:
             return post;
         }
@@ -50,13 +52,13 @@ const MainPage = () => {
     <>
       <Header />
       <MainPageContainer>
+        <p>최신 순 | 오래된 순</p>
         <PostsContainer>
           {/* TODO: 필터 레이아웃 수정 */}
-          <p>최신 순 | 오래된 순</p>
           <PostList>
             {searched &&
-              searched.map((post) => {
-                return <Posts post={post} key={post.id} />;
+              searched.map((post, idx) => {
+                return <Posts post={post} key={post.id} postNum={idx + 1} />;
               })}
           </PostList>
         </PostsContainer>
@@ -66,26 +68,27 @@ const MainPage = () => {
   );
 };
 
-const PostList = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-`;
-
-const PostsContainer = styled.div`
-  align-items: center;
-  height: 80vh; // TODO: 전체 높이 수정 조정
-  width: 70%;
-  padding: 1em 2em 1em 2em;
-  /* background-color: gray; */
-  box-sizing: border-box;
-`;
-
 const MainPageContainer = styled.div`
+  height: 50%; // TODO: 전체 높이 수정 조정
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const PostsContainer = styled.div`
+  align-items: center;
+  width: 70%;
+  padding: 1em 2em 1em 2em;
+  /* background-color: gray; */
+  box-sizing: border-box;
+  overflow: auto;
+`;
+
+const PostList = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
 `;
 
 export default MainPage;
