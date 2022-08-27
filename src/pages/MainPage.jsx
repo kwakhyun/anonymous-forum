@@ -11,10 +11,16 @@ const MainPage = () => {
   const postList = useSelector((store) => store.post.posts);
   const [searched, setSearched] = useState();
   const dispatch = useDispatch();
+  // let refresh = 0;
 
   useEffect(() => {
     dispatch(getPost());
   }, []);
+
+  useEffect(() => {
+    setSearched(postList);
+    // refresh = 0;
+  }, [postList]);
 
   const searchPost = (search) => {
     const { select, input } = search;
@@ -24,10 +30,6 @@ const MainPage = () => {
     }
     getSearched(select, input);
   };
-
-  useEffect(() => {
-    setSearched(postList);
-  }, [postList]);
 
   const getSearched = (select, input) => {
     setSearched(
