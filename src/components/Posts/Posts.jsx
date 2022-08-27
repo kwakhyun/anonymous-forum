@@ -6,11 +6,12 @@ const Posts = ({ post }) => {
   const { id, nickname, password, date, title, content, commtents } = post;
   const navigate = useNavigate();
   const goToDeatil = () => {
-    navigate(`/posts/${post.id}`);
+    navigate(`/posts/${id}`);
   };
+  const postNum = 0;
   return (
     <PostContainer onClick={goToDeatil}>
-      <PostId>{id}</PostId>
+      <PostId>{postNum}</PostId>
       <PostTitle>{title}</PostTitle>
       <PostNickname>{nickname}</PostNickname>
       <PostDate>{date}</PostDate>
@@ -31,11 +32,11 @@ const PostContainer = styled.div`
 `;
 
 const PostId = styled.div`
-  flex: 1 1 2%;
+  flex: 1 1 5%;
   margin-right: 0.5em;
 `;
 const PostTitle = styled.div`
-  flex: 1 1 80%;
+  flex: 1 1 70%;
 `;
 const PostNickname = styled.div`
   flex: 1 1 5%;
@@ -43,7 +44,7 @@ const PostNickname = styled.div`
   margin-right: 1em;
 `;
 const PostDate = styled.div`
-  flex: 1 1 5%;
+  flex: 1 1 20%;
 `;
 
 export default Posts;
