@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import MainButton from "../mainButton/MainButton";
 
@@ -17,12 +17,21 @@ const Search = ({ searchPost }) => {
       select: selectRef.current.value,
       input: inputRef.current.value,
     });
-    console.log("search?? ", search);
   };
 
   const onSearch = () => {
     searchPost(search);
   };
+
+  useEffect(() => {
+    inputRef.current.addEventListener("keypress", logKey);
+
+    function logKey(event) {
+      if (event.code === "Enter") {
+        searchPost(search);
+      }
+    }
+  }, [search]);
 
   return (
     <SearchContainer>
