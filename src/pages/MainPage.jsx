@@ -34,11 +34,11 @@ const MainPage = () => {
       postList.filter((post) => {
         switch (select) {
           case "title":
-            return post.title.includes(input);
+            return post.title.toUpperCase().includes(input.toUpperCase());
           case "content":
-            return post.content.includes(input);
+            return post.content.toUpperCase().includes(input.toUpperCase());
           case "nickname":
-            return post.nickname.includes(input);
+            return post.nickname.toUpperCase().includes(input.toUpperCase());
           default:
             return post;
         }
