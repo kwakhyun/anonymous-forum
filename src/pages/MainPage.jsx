@@ -51,9 +51,7 @@ const MainPage = () => {
   return (
     <MainPageLayout>
       <MainPageContainer>
-        <div>
-          <Header />
-        </div>
+        <Header />
         <Sort>최신 순 | 오래된 순</Sort>
         <PostsContainer>
           {/* TODO: 필터 레이아웃 수정 */}
