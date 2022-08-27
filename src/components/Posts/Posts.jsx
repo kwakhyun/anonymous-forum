@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Posts = ({ post }) => {
+const Posts = ({ post, postNum }) => {
   const { id, nickname, password, date, title, content, commtents } = post;
   const navigate = useNavigate();
   const goToDeatil = () => {
     navigate(`/posts/${id}`);
   };
-  const postNum = 0;
   return (
     <PostContainer onClick={goToDeatil}>
       <PostId>{postNum}</PostId>

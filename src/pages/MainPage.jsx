@@ -52,13 +52,13 @@ const MainPage = () => {
     <>
       <Header />
       <MainPageContainer>
+        <p>최신 순 | 오래된 순</p>
         <PostsContainer>
           {/* TODO: 필터 레이아웃 수정 */}
-          <p>최신 순 | 오래된 순</p>
           <PostList>
             {searched &&
-              searched.map((post) => {
-                return <Posts post={post} key={post.id} />;
+              searched.map((post, idx) => {
+                return <Posts post={post} key={post.id} postNum={idx + 1} />;
               })}
           </PostList>
         </PostsContainer>
@@ -68,26 +68,27 @@ const MainPage = () => {
   );
 };
 
-const PostList = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-`;
-
-const PostsContainer = styled.div`
-  align-items: center;
-  height: 80vh; // TODO: 전체 높이 수정 조정
-  width: 70%;
-  padding: 1em 2em 1em 2em;
-  /* background-color: gray; */
-  box-sizing: border-box;
-`;
-
 const MainPageContainer = styled.div`
+  height: 50%; // TODO: 전체 높이 수정 조정
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const PostsContainer = styled.div`
+  align-items: center;
+  width: 70%;
+  padding: 1em 2em 1em 2em;
+  /* background-color: gray; */
+  box-sizing: border-box;
+  overflow: auto;
+`;
+
+const PostList = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
 `;
 
 export default MainPage;

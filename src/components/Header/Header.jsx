@@ -33,7 +33,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   padding: 0 1em 0 1em;
   border-bottom: 2px solid grey;
-  /* background-color: rebeccapurple; */
+  background-color: rebeccapurple;
 `;
 
 const Title = styled.h1``;
