@@ -19,21 +19,32 @@ const Header = () => {
   };
 
   return (
-    <HeaderContainer>
-      <HomeImg src={img_home} onClick={goToHome} />
-      <Title>유머 게시판</Title>
-      <MainButton onClick={goToPost} children="새 글 작성" />
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        <HomeImg src={img_home} onClick={goToHome} />
+        <Title>유머 게시판</Title>
+        <MainButton onClick={goToPost} children="새 글 작성" />
+      </HeaderContainer>
+      <Empty></Empty>
+    </>
   );
 };
 
 const HeaderContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1em 0 1em;
   border-bottom: 2px solid grey;
-  background-color: rebeccapurple;
+`;
+
+const Empty = styled.div`
+  height: 80px;
 `;
 
 const Title = styled.h1``;
