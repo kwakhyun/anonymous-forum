@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 /**
  * postId : "고유 값"
  * nickname : "이름"
@@ -7,15 +9,22 @@ import { useEffect, useState } from "react";
  * title : "제목"
  * content : "내용"
  */
-const useGetData = (table, id) => {
+const useGetData = async (table) => {
+  const { id } = useParams();
   const [url, setUrl] = useState(`http://localhost:3001/${table}/${id}`);
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    axios.get(url).then((data) => setValue(data));
+    const getData = async () => {
+      await axios
+        .get(url)
+        .then((res) => setValue(res.data))
+        .catch(() => console.log("불러오지 못했습니다."));
+    };
+    getData();
   }, [url]);
 
-  return [value];
+  return value;
 };
 
 export default useGetData;

@@ -1,2 +1,2 @@
 export { MainButton } from "./mainButton";
-export { CommentList } from "./comment";
+export { CommentList, CommentForm } from "./comment";

@@ -1,22 +1,35 @@
 import { useGetData } from "../../hook";
 import { useEffect, useState } from "react";
 import CommentCard from "./CommentCard";
+import styled from "styled-components";
 
-const CommentList = ({ id }) => {
-  const [datas] = useGetData("comments", id);
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    setData(datas.data);
-  }, [datas]);
-
+const CommentList = ({ data }) => {
+  const [value, setValue] = useState([]);
+  let id = "";
+  data.then((res) => {
+    id = res.id;
+    setValue(res.list);
+  });
   return (
-    <div>
-      {data &&
-        data.list.map((comment) => {
-          return <CommentCard key={comment.id} comment={comment}></CommentCard>;
+    <Div>
+      {value &&
+        value.map((comment) => {
+          return (
+            <CommentCard
+              key={comment.id}
+              postId={id}
+              comment={comment}
+            ></CommentCard>
+          );
         })}
-    </div>
+    </Div>
   );
 };
+
+const Div = styled.div`
+  width: 80%;
+  min-width: 800px;
+  max-width: 1200px;
+`;
 
 export default CommentList;
