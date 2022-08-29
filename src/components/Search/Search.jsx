@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import MainButton from "../mainButton/MainButton";
 
@@ -17,12 +17,20 @@ const Search = ({ searchPost }) => {
       select: selectRef.current.value,
       input: inputRef.current.value,
     });
-    console.log("search?? ", search);
   };
 
   const onSearch = () => {
     searchPost(search);
   };
+
+  useEffect(() => {
+    inputRef.current.addEventListener("keypress", logKey);
+    function logKey(event) {
+      if (event.code === "Enter") {
+        searchPost(search);
+      }
+    }
+  }, [search]);
 
   return (
     <SearchContainer>
@@ -44,8 +52,10 @@ const Search = ({ searchPost }) => {
 
 const SearchContainer = styled.div`
   display: flex;
-  width: 50%;
+  width: 40%;
   margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  bottom: 0;
 `;
 
 const SearchSelect = styled.select`
@@ -54,7 +64,7 @@ const SearchSelect = styled.select`
 `;
 
 const SearchInput = styled.input`
-  flex: 1 1 70%;
+  flex: 1 1 80%;
   margin-right: 1em;
 `;
 
