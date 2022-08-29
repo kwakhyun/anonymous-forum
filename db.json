@@ -1,0 +1,64 @@
+{
+  "posts": [
+    {
+      "id": "a91b73c1-2fd4-442e-b3e8-f072f50f3285",
+      "nickname": "qq",
+      "password": "qq",
+      "title": "qq",
+      "content": "qq",
+      "date": "2022.08.29 19:51:03",
+      "ip": "119.67"
+    },
+    {
+      "id": "3c66ef06-a97c-443a-afd1-7b69b4ffae67",
+      "nickname": "ww",
+      "password": "ww",
+      "title": "ww",
+      "content": "ww",
+      "date": "2022.08.29 19:51:07",
+      "ip": "119.67"
+    },
+    {
+      "id": "b454d440-bb07-49ed-a846-01fac6934855",
+      "nickname": "ee",
+      "password": "ee",
+      "title": "ee",
+      "content": "ee",
+      "date": "2022.08.29 19:51:11",
+      "ip": "119.67"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "list": [
+        {
+          "id": 1,
+          "comment": "댓글",
+          "nickname": "닉네임",
+          "password": "패스워드",
+          "date": "작성일"
+        },
+        {
+          "id": 2,
+          "comment": "댓글2",
+          "nickname": "닉네임2",
+          "password": "패스워드2",
+          "date": "작성일2"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "list": [
+        {
+          "id": 1,
+          "comment": "댓글",
+          "nickname": "닉네임",
+          "password": "패스워드",
+          "date": "작성일"
+        }
+      ]
+    }
+  ]
+}
