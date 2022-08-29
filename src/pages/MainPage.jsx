@@ -48,13 +48,29 @@ const MainPage = () => {
     );
   };
 
+  const sortNew = () => {
+    setSearched(Array.from(postList).sort());
+  };
+
+  const sortOld = () => {
+    setSearched(
+      Array.from(postList).sort(function (a, b) {
+        if (a.date < b.date) return 1;
+        if (a.date > b.date) return -1;
+        if (a.date === b.date) return 0;
+        return null;
+      })
+    );
+  };
+
   return (
     <MainPageLayout>
       <MainPageContainer>
-        <div>
-          <Header />
-        </div>
-        <Sort>최신 순 | 오래된 순</Sort>
+        <Header />
+        <Sort>
+          <SortMenu onClick={sortNew}>최신 순</SortMenu> |
+          <SortMenu onClick={sortOld}>오래된 순</SortMenu>
+        </Sort>
         <PostsContainer>
           {/* TODO: 필터 레이아웃 수정 */}
           <PostList>
@@ -88,6 +104,10 @@ const Sort = styled.div`
   width: 70%;
   text-align: right;
   padding: 1em 0 1em 0;
+`;
+
+const SortMenu = styled.span`
+  cursor: pointer;
 `;
 
 const PostsContainer = styled.div`
