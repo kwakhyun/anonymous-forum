@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
 import { deletePost } from "../redux/modules/postSlice";
+import styled from "styled-components";
 
 const DetailPage = () => {
   const params = useParams();
@@ -29,15 +29,15 @@ const DetailPage = () => {
   console.log(info);
 
   return (
-    <div>
+    <DetailPageWrapper>
       <span>No.{info.num}</span>
       <h2>{info.title}</h2>
       <div>
-        {info.nickname}
-        ({info.ip}) | {info.date}
+        {info.nickname}({info.ip}) | {info.date}
       </div>
       <hr />
       <p>{info.content}</p>
+      <ButtonDiv>
       <button
         onClick={() => {
           let input = prompt("비밀번호를 입력하세요.");
@@ -65,8 +65,52 @@ const DetailPage = () => {
       </button>
       <button onClick={() => navigate("/post")}>글쓰기</button>
       <button onClick={() => navigate(-1)}>뒤로가기</button>
-    </div>
+      </ButtonDiv>
+    </DetailPageWrapper>
   );
 };
+
+const DetailPageWrapper = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  hr {
+    border: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+`;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 200px;
+  button {
+    width: 100px;
+    height: 50px;
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+`;
 
 export default DetailPage;
