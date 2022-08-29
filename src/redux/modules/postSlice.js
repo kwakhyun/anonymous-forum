@@ -12,13 +12,14 @@ export const addPost = createAsyncThunk("ADD_POST", async (post) => {
 });
 
 export const deletePost = createAsyncThunk("DELETE_POST", async (id) => {
-  const res = await axios.delete("http://localhost:3001/posts/" + id);
-  return res.data;
+  await axios.delete("http://localhost:3001/posts/" + id);
 });
 
-export const updatePost = createAsyncThunk("UPDATE_POST", async (id, post) => {
-  const res = await axios.patch("http://localhost:3001/posts/" + id, post);
-  return res.data;
+export const updatePost = createAsyncThunk("UPDATE_POST", async (post) => {
+  await axios.patch("http://localhost:3001/posts/" + post.id, {
+    title: post.title,
+    content: post.content,
+  });
 });
 
 const postSlice = createSlice({
@@ -26,6 +27,7 @@ const postSlice = createSlice({
   initialState: {
     posts: [],
   },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getPost.fulfilled, (state, action) => {
       state.posts = [...action.payload];
