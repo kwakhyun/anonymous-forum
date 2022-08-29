@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { addPost } from "../redux/modules/postSlice";
 import axios from "axios";
+import styled from "styled-components";
 
 const PostPage = () => {
   const title = useRef(null);
@@ -39,33 +40,88 @@ const PostPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <input ref={nickname} placeholder="닉네임" />
-      <input ref={password} type="password" placeholder="비밀번호" />
-      <br />
+    <PostPageStyle>
+      <InlineInput>
+        <input ref={nickname} placeholder="닉네임" />
+        <input ref={password} type="password" placeholder="비밀번호" />
+      </InlineInput>
       <input ref={title} placeholder="제목" />
-      <br />
       <textarea ref={content} placeholder="내용" />
-      <button
-        onClick={() => {
-          dispatch(
-            addPost({
-              id: v4(),
-              nickname: nickname.current.value,
-              password: content.current.value,
-              title: title.current.value,
-              content: content.current.value,
-              date: post_time,
-              ip: userIp,
-            })
-          );
-          navigate("/");
-        }}
-      >
-        글 게시
-      </button>
-    </div>
+      <ButtonDiv>
+        <button
+          onClick={() => {
+            dispatch(
+              addPost({
+                id: v4(),
+                nickname: nickname.current.value,
+                password: content.current.value,
+                title: title.current.value,
+                content: content.current.value,
+                date: post_time,
+                ip: userIp,
+              })
+            );
+            navigate("/");
+          }}
+        >
+          글 게시
+        </button>
+        <button onClick={() => navigate(-1)}>뒤로가기</button>
+      </ButtonDiv>
+    </PostPageStyle>
   );
 };
+
+const PostPageStyle = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  input {
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+  }
+  textarea {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+`;
+
+const InlineInput = styled.div`
+  display: flex;
+  input {
+    width: 200px;
+    margin-right: 10px;
+  }
+`;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  button {
+    width: 100px;
+    height: 50px;
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+`;
 
 export default PostPage;
