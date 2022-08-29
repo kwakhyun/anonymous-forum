@@ -16,6 +16,11 @@ export const deletePost = createAsyncThunk("DELETE_POST", async (id) => {
   return res.data;
 });
 
+export const updatePost = createAsyncThunk("UPDATE_POST", async (id, post) => {
+  const res = await axios.patch("http://localhost:3001/posts/" + id, post);
+  return res.data;
+});
+
 const postSlice = createSlice({
   name: "post",
   initialState: {
