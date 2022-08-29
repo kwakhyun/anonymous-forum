@@ -10,6 +10,8 @@ function App() {
         <Route path="post/" element={<PostPage />} />
         <Route path="detail/:id" element={<DetailPage />} />
         <Route path="/comments/:id" element={<CommentPage />} />
+        <Route path="/comments" element={<MainPage />} />
+        <Route path="*" component={<MainPage />} />
       </Routes>
     </AppContainer>
   );
