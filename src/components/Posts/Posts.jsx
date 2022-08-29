@@ -6,7 +6,7 @@ const Posts = ({ post, postNum }) => {
   const { id, nickname, password, date, title, content, commtents } = post;
   const navigate = useNavigate();
   const goToDeatil = () => {
-    navigate(`/posts/${id}`);
+    navigate(`/detail/${id}`);
   };
   return (
     <PostContainer onClick={goToDeatil}>
