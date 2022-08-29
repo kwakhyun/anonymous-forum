@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Posts = ({ post }) => {
+const Posts = ({ post, postNum }) => {
   const { id, nickname, password, date, title, content, commtents } = post;
   const navigate = useNavigate();
   const goToDeatil = () => {
-    navigate(`/posts/${post.id}`);
+    navigate(`/posts/${id}`);
   };
   return (
     <PostContainer onClick={goToDeatil}>
-      <PostId>{id}</PostId>
+      <PostId>{postNum}</PostId>
       <PostTitle>{title}</PostTitle>
       <PostNickname>{nickname}</PostNickname>
       <PostDate>{date}</PostDate>
@@ -31,19 +31,20 @@ const PostContainer = styled.div`
 `;
 
 const PostId = styled.div`
-  flex: 1 1 2%;
+  flex: 1 1 5%;
   margin-right: 0.5em;
 `;
 const PostTitle = styled.div`
-  flex: 1 1 80%;
+  flex: 1 1 70%;
 `;
 const PostNickname = styled.div`
-  flex: 1 1 5%;
+  flex: 1 1 10%;
   text-align: right;
   margin-right: 1em;
 `;
 const PostDate = styled.div`
-  flex: 1 1 5%;
+  flex: 1 1 15%;
+  text-align: center;
 `;
 
 export default Posts;
