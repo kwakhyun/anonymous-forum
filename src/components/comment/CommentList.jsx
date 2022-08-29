@@ -1,26 +1,15 @@
-import { useGetData } from "../../hook";
-import { useEffect, useState } from "react";
 import CommentCard from "./CommentCard";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
-const CommentList = ({ data }) => {
-  const [value, setValue] = useState([]);
-  let id = "";
-  data.then((res) => {
-    id = res.id;
-    setValue(res.list);
-  });
+const CommentList = () => {
+  const { list } = useSelector((state) => state.comment);
+
   return (
     <Div>
-      {value &&
-        value.map((comment) => {
-          return (
-            <CommentCard
-              key={comment.id}
-              postId={id}
-              comment={comment}
-            ></CommentCard>
-          );
+      {list &&
+        list.map((comment) => {
+          return <CommentCard key={comment.id} comment={comment} />;
         })}
     </Div>
   );
@@ -28,8 +17,12 @@ const CommentList = ({ data }) => {
 
 const Div = styled.div`
   width: 80%;
+  margin-top: 10px;
   min-width: 800px;
   max-width: 1200px;
+  border: none;
+  border-top: 2px solid blue;
+  border-bottom: 2px solid blue;
 `;
 
 export default CommentList;

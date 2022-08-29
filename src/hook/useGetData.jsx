@@ -9,8 +9,7 @@ import { useParams } from "react-router-dom";
  * title : "제목"
  * content : "내용"
  */
-const useGetData = async (table) => {
-  const { id } = useParams();
+const useGetData = async (table, id) => {
   const [url, setUrl] = useState(`http://localhost:3001/${table}/${id}`);
   const [value, setValue] = useState("");
 

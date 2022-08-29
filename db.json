@@ -35,7 +35,39 @@
   ],
   "comments": [
     {
-      "id": 1,
+      "list": [
+        {
+          "id": 2,
+          "comment": "댓글2",
+          "nickname": "닉네임2",
+          "password": "패스워드2",
+          "date": "작성일2"
+        },
+        {
+          "id": "5b53ee6b-147b-4963-aaff-5684700ccd02",
+          "comment": "bb",
+          "nickname": "gg",
+          "password": "aa",
+          "date": "2022년 08월 29일"
+        },
+        {
+          "id": "8070245a-bead-426d-85ee-8bc212407149",
+          "comment": "c",
+          "nickname": "aa",
+          "password": "bb",
+          "date": "2022년 08월 29일"
+        },
+        {
+          "id": "50b7060c-a5c6-442f-baf4-3d58f8c06fb6",
+          "comment": "c",
+          "nickname": "aa",
+          "password": "bb",
+          "date": "2022년 08월 29일"
+        }
+      ],
+      "id": 1
+    },
+    {
       "list": [
         {
           "id": 1,
@@ -46,24 +78,62 @@
         },
         {
           "id": 2,
-          "comment": "댓글2",
-          "nickname": "닉네임2",
-          "password": "패스워드2",
-          "date": "작성일2"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "list": [
-        {
-          "id": 1,
           "comment": "댓글",
           "nickname": "닉네임",
           "password": "패스워드",
-          "date": "작성일"
+          "date": "2022-08-29T08:28:41.539Z"
+        },
+        {
+          "id": 3,
+          "comment": "댓글",
+          "nickname": "닉네임",
+          "password": "패스워드",
+          "date": "2022-08-29T08:29:08.654Z"
+        },
+        {
+          "id": 4,
+          "comment": "댓글",
+          "nickname": "닉네임",
+          "password": "패스워드",
+          "date": "2022-08-29T08:29:08.654Z"
+        },
+        {
+          "id": 5,
+          "comment": "댓글",
+          "nickname": "닉네임",
+          "password": "패스워드",
+          "date": "20220829"
+        },
+        {
+          "id": 6,
+          "comment": "댓글",
+          "nickname": "닉네임",
+          "password": "패스워드",
+          "date": "2022년 08월 29일"
         }
-      ]
+      ],
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
     }
   ]
 }
