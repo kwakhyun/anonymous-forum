@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,7 +44,7 @@ const CommentForm = ({ formData }) => {
       return alert("채워주세요.");
     }
 
-    const newList = [...list];
+    const newList = list ? [...list] : [];
     let date = new Date();
     let year = date.getFullYear();
     let month = ("0" + (1 + date.getMonth())).slice(-2);

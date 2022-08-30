@@ -29,10 +29,8 @@ const DetailPage = () => {
     return acc;
   }, {});
 
-  console.log(info);
-
   return (
-    <>
+    <div>
       <Header />
       <DetailPageWrapper>
         <span>No.{info.num}</span>
@@ -81,7 +79,7 @@ const DetailPage = () => {
         </ButtonDiv>
       </DetailPageWrapper>
       <CommentPage />
-    </>
+    </div>
   );
 };
 

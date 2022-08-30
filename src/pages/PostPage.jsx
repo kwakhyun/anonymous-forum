@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { useGetTime } from "../hook/useGetTime";
 import Header from "../components/Header/Header";
 import Button from "../components/mainButton/MainButton";
+import { postComment } from "../redux/modules/commentSlice";
 
 const PostPage = () => {
   const title = useRef(null);
@@ -63,15 +64,26 @@ const PostPage = () => {
                 alert("제목은 최소 2자 이상 입력해주세요.");
                 title.current.focus();
               } else {
+                let id = v4();
+                const data = {
+                  id: id,
+                  nickname: nickname.current.value,
+                  password: content.current.value,
+                  title: title.current.value,
+                  content: content.current.value,
+                  date: time,
+                  ip: userIp,
+                };
+
+                axios.post("http://localhost:3001/comments", {
+                  id: id,
+                  list: [],
+                });
+                dispatch(addPost(data));
                 dispatch(
-                  addPost({
-                    id: v4(),
-                    nickname: nickname.current.value,
-                    password: content.current.value,
-                    title: title.current.value,
-                    content: content.current.value,
-                    date: time,
-                    ip: userIp,
+                  postComment({
+                    id: id,
+                    list: [],
                   })
                 );
                 navigate("/");

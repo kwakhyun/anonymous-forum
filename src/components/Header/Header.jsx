@@ -24,7 +24,7 @@ const Header = () => {
       <HeaderContainer>
         <HomeImg src={img_home} onClick={goToHome} />
         <Title>유머 게시판</Title>
-        <MainButton onClick={goToPost} children="새 글 작성" />
+        <MainButton width="6em" onClick={goToPost} children="새 글 작성" />
       </HeaderContainer>
       <Empty></Empty>
     </div>
