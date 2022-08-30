@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Posts = ({ post, postNum }) => {
-  const { id, nickname, password, date, title, content, commtents } = post;
+  const { id, nickname, ip, password, date, title, content, commtents } = post;
   const navigate = useNavigate();
   const goToDeatil = () => {
     navigate(`/detail/${id}`);
@@ -12,8 +12,10 @@ const Posts = ({ post, postNum }) => {
     <PostContainer onClick={goToDeatil}>
       <PostId>{postNum}</PostId>
       <PostTitle>{title}</PostTitle>
-      <PostNickname>{nickname}</PostNickname>
-      <PostDate>{date}</PostDate>
+      <PostNickname>
+        {nickname} ({ip})
+      </PostNickname>
+      <PostDate>{date.split(" ", 1)}</PostDate>
     </PostContainer>
   );
 };
