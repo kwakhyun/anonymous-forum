@@ -72,7 +72,6 @@ const MainPage = () => {
           <SortMenu onClick={sortOld}>오래된 순</SortMenu>
         </Sort>
         <PostsContainer>
-          {/* TODO: 필터 레이아웃 수정 */}
           <PostList>
             {searched &&
               searched.map((post, idx) => {
@@ -115,7 +114,6 @@ const PostsContainer = styled.div`
   width: 70%;
   height: 100%;
   padding: 1em 2em 1em 2em;
-  /* background-color: gray; */
   box-sizing: border-box;
   overflow: auto;
 `;

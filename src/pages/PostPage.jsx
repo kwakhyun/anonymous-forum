@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addPost } from "../redux/modules/postSlice";
 import axios from "axios";
 import styled from "styled-components";
+import Button from "../components/mainButton/MainButton";
 
 const PostPage = () => {
   const title = useRef(null);
@@ -48,25 +49,45 @@ const PostPage = () => {
       <input ref={title} placeholder="제목" />
       <textarea ref={content} placeholder="내용" />
       <ButtonDiv>
-        <button
+        <Button
           onClick={() => {
-            dispatch(
-              addPost({
-                id: v4(),
-                nickname: nickname.current.value,
-                password: content.current.value,
-                title: title.current.value,
-                content: content.current.value,
-                date: post_time,
-                ip: userIp,
-              })
-            );
-            navigate("/");
+            if (nickname.current.value === "") {
+              alert("닉네임을 입력하세요.");
+              nickname.current.focus();
+            } else if (password.current.value === "") {
+              alert("비밀번호를 입력하세요.");
+              password.current.focus();
+            } else if (title.current.value === "") {
+              alert("제목을 입력하세요.");
+              title.current.focus();
+            } else if (content.current.value === "") {
+              alert("내용을 입력하세요.");
+              content.current.focus();
+            } else if (password.current.value.length < 4) {
+              alert("비밀번호는 최소 4자리 이상 입력해주세요.");
+              password.current.focus();
+            } else if (title.current.value.length < 2) {
+              alert("제목은 최소 2자 이상 입력해주세요.");
+              title.current.focus();
+            } else {
+              dispatch(
+                addPost({
+                  id: v4(),
+                  nickname: nickname.current.value,
+                  password: content.current.value,
+                  title: title.current.value,
+                  content: content.current.value,
+                  date: post_time,
+                  ip: userIp,
+                })
+              );
+              navigate("/");
+            }
           }}
         >
           글 게시
-        </button>
-        <button onClick={() => navigate(-1)}>뒤로가기</button>
+        </Button>
+        <Button onClick={() => navigate(-1)}>뒤로가기</Button>
       </ButtonDiv>
     </PostPageStyle>
   );
@@ -107,6 +128,9 @@ const ButtonDiv = styled.div`
   justify-content: flex-end;
   margin-top: 20px;
   button {
+    margin-left: 10px;
+  }
+  /* button {
     width: 100px;
     height: 50px;
     margin-left: 10px;
@@ -121,7 +145,7 @@ const ButtonDiv = styled.div`
       background-color: #000;
       color: #fff;
     }
-  }
+  } */
 `;
 
 export default PostPage;

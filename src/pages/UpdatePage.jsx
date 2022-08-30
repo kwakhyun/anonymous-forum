@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { updatePost } from "../redux/modules/postSlice";
 import styled from "styled-components";
+import Button from "../components/mainButton/MainButton";
 
 const UpdatePage = () => {
   const title = useRef(null);
@@ -39,21 +40,38 @@ const UpdatePage = () => {
         <textarea defaultValue={info.content} ref={content} />
       </div>
       <ButtonDiv>
-        <button
+        <Button
           onClick={() => {
-            dispatch(
-              updatePost({
-                ...info,
-                title: title.current.value,
-                content: content.current.value,
-              })
-            );
-            navigate("/");
+            if (title.current.value === "") {
+              alert("제목을 입력해주세요.");
+              title.current.focus();
+            } else if (content.current.value === "") {
+              alert("내용을 입력해주세요.");
+              content.current.focus();
+            } else if (title.current.value.length < 2) {
+              alert("제목은 최소 2자 이상 입력해주세요.");
+              title.current.focus();
+            } else {
+              dispatch(
+                updatePost({
+                  ...info,
+                  title: title.current.value,
+                  content: content.current.value,
+                })
+              );
+              navigate("/");
+            }
           }}
         >
           등록
-        </button>
-        <button onClick={() => navigate(-1)}>취소</button>
+        </Button>
+        <Button
+          onClick={() => {
+            if (window.confirm("수정을 취소하시겠습니까?")) navigate(-1);
+          }}
+        >
+          취소
+        </Button>
       </ButtonDiv>
     </UpdatePageStyle>
   );
@@ -88,6 +106,9 @@ const ButtonDiv = styled.div`
   justify-content: flex-end;
   margin-top: 20px;
   button {
+    margin-left: 10px;
+  }
+  /* button {
     width: 100px;
     height: 50px;
     margin-left: 10px;
@@ -102,7 +123,7 @@ const ButtonDiv = styled.div`
       background-color: #000;
       color: #fff;
     }
-  }
+  } */
 `;
 
 export default UpdatePage;
