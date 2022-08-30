@@ -58,6 +58,22 @@
           "nickname": "aa",
           "password": "bb",
           "date": "2022년 08월 29일"
+        },
+        {
+          "id": "f9dab3d0-8751-4606-b0ae-a2eff610559f",
+          "ip": "182.229",
+          "comment": "1234",
+          "nickname": "1234",
+          "password": "1234",
+          "date": "2022년 08월 30일"
+        },
+        {
+          "id": "327a1d1e-9f5b-462d-9e10-103ea36264c0",
+          "ip": "182.229",
+          "comment": "1234",
+          "nickname": "1234",
+          "password": "1234",
+          "date": "2022년 08월 30일"
         }
       ],
       "id": 1

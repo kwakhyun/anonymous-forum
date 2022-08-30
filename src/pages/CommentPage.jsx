@@ -4,23 +4,23 @@ import { CommentForm, CommentList } from "../components";
 import { useGetData } from "../hook";
 import { postComment } from "../redux/modules/commentSlice";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 const CommentPage = () => {
   const dispatch = useDispatch();
   const param = useParams().id;
   const data = useGetData("comments", param);
-  const [length, setLength] = useState(0);
+  const formData = { nickname: "", password: "", content: "" };
+
   useEffect(() => {
     data.then((res) => {
-      dispatch(postComment({ id: res.id, list: res.list }));
-      setLength(res.list.length);
+      dispatch(postComment({ id: res.id, list: res?.list }));
     });
-  }, [data, dispatch]);
+  }, [data]);
+
   return (
     <DivPage>
-      <h3>전체 댓글 : {length}</h3>
-      <CommentForm />
+      <CommentForm formData={formData} />
       <CommentList />
     </DivPage>
   );
