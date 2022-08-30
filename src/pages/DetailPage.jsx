@@ -3,7 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deletePost } from "../redux/modules/postSlice";
 import styled from "styled-components";
+import Header from "../components/Header/Header";
 import Button from "../components/mainButton/MainButton";
+import CommentPage from "./CommentPage";
 
 const DetailPage = () => {
   const params = useParams();
@@ -30,52 +32,56 @@ const DetailPage = () => {
   console.log(info);
 
   return (
-    <DetailPageWrapper>
-      <span>No.{info.num}</span>
-      <h2>{info.title}</h2>
-      <div>
-        {info.nickname}({info.ip}) | {info.date}
-      </div>
-      <hr />
-      <p>{info.content}</p>
-      <ButtonDiv>
-        <Button
-          onClick={() => {
-            let input = prompt("비밀번호를 입력하세요.");
-            if (input === info.password) {
-              navigate("/update/" + info.id);
-            } else if (input === null) {
-              alert("취소되었습니다.");
-            } else if (input !== info.password) {
-              alert("비밀번호가 틀렸습니다.");
-            }
-          }}
-        >
-          수정
-        </Button>
-        <Button
-          onClick={() => {
-            let input = prompt("비밀번호를 입력하세요.");
-            if (input === info.password) {
-              if (window.confirm("게시글을 삭제하시겠습니까?")) {
-                dispatch(deletePost(info.id));
-                navigate("/");
-              } else {
+    <>
+      <Header />
+      <DetailPageWrapper>
+        <span>No.{info.num}</span>
+        <h2>{info.title}</h2>
+        <div>
+          {info.nickname}({info.ip}) | {info.date}
+        </div>
+        <hr />
+        <p>{info.content}</p>
+        <ButtonDiv>
+          <Button
+            onClick={() => {
+              let input = prompt("비밀번호를 입력하세요.");
+              if (input === info.password) {
+                navigate("/update/" + info.id);
+              } else if (input === null) {
                 alert("취소되었습니다.");
+              } else if (input !== info.password) {
+                alert("비밀번호가 틀렸습니다.");
               }
-            } else if (input === null) {
-              alert("취소되었습니다.");
-            } else if (input !== info.password) {
-              alert("비밀번호가 틀렸습니다.");
-            }
-          }}
-        >
-          삭제
-        </Button>
-        <Button onClick={() => navigate("/post")}>글쓰기</Button>
-        <Button onClick={() => navigate(-1)}>뒤로가기</Button>
-      </ButtonDiv>
-    </DetailPageWrapper>
+            }}
+          >
+            수정
+          </Button>
+          <Button
+            onClick={() => {
+              let input = prompt("비밀번호를 입력하세요.");
+              if (input === info.password) {
+                if (window.confirm("게시글을 삭제하시겠습니까?")) {
+                  dispatch(deletePost(info.id));
+                  navigate("/");
+                } else {
+                  alert("취소되었습니다.");
+                }
+              } else if (input === null) {
+                alert("취소되었습니다.");
+              } else if (input !== info.password) {
+                alert("비밀번호가 틀렸습니다.");
+              }
+            }}
+          >
+            삭제
+          </Button>
+          <Button onClick={() => navigate("/post")}>글쓰기</Button>
+          <Button onClick={() => navigate(-1)}>뒤로가기</Button>
+        </ButtonDiv>
+      </DetailPageWrapper>
+      <CommentPage />
+    </>
   );
 };
 
@@ -104,25 +110,6 @@ const ButtonDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 200px;
-  button {
-    margin-left: 10px;
-  }
-  /* button {
-    width: 100px;
-    height: 50px;
-    margin-left: 10px;
-    background-color: #fff;
-    border: 1px solid #000;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
-    &:hover {
-      background-color: #000;
-      color: #fff;
-    }
-  } */
 `;
 
 export default DetailPage;
