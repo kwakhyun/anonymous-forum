@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { updatePost } from "../redux/modules/postSlice";
 import styled from "styled-components";
+import Button from "../components/mainButton/MainButton";
 
 const UpdatePage = () => {
   const title = useRef(null);
@@ -39,7 +40,7 @@ const UpdatePage = () => {
         <textarea defaultValue={info.content} ref={content} />
       </div>
       <ButtonDiv>
-        <button
+        <Button
           onClick={() => {
             if (title.current.value === "") {
               alert("제목을 입력해주세요.");
@@ -63,14 +64,14 @@ const UpdatePage = () => {
           }}
         >
           등록
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => {
             if (window.confirm("수정을 취소하시겠습니까?")) navigate(-1);
           }}
         >
           취소
-        </button>
+        </Button>
       </ButtonDiv>
     </UpdatePageStyle>
   );
@@ -105,6 +106,9 @@ const ButtonDiv = styled.div`
   justify-content: flex-end;
   margin-top: 20px;
   button {
+    margin-left: 10px;
+  }
+  /* button {
     width: 100px;
     height: 50px;
     margin-left: 10px;
@@ -119,7 +123,7 @@ const ButtonDiv = styled.div`
       background-color: #000;
       color: #fff;
     }
-  }
+  } */
 `;
 
 export default UpdatePage;

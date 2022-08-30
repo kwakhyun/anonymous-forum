@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addPost } from "../redux/modules/postSlice";
 import axios from "axios";
 import styled from "styled-components";
+import Button from "../components/mainButton/MainButton";
 
 const PostPage = () => {
   const title = useRef(null);
@@ -48,7 +49,7 @@ const PostPage = () => {
       <input ref={title} placeholder="제목" />
       <textarea ref={content} placeholder="내용" />
       <ButtonDiv>
-        <button
+        <Button
           onClick={() => {
             if (nickname.current.value === "") {
               alert("닉네임을 입력하세요.");
@@ -85,8 +86,8 @@ const PostPage = () => {
           }}
         >
           글 게시
-        </button>
-        <button onClick={() => navigate(-1)}>뒤로가기</button>
+        </Button>
+        <Button onClick={() => navigate(-1)}>뒤로가기</Button>
       </ButtonDiv>
     </PostPageStyle>
   );
@@ -127,6 +128,9 @@ const ButtonDiv = styled.div`
   justify-content: flex-end;
   margin-top: 20px;
   button {
+    margin-left: 10px;
+  }
+  /* button {
     width: 100px;
     height: 50px;
     margin-left: 10px;
@@ -141,7 +145,7 @@ const ButtonDiv = styled.div`
       background-color: #000;
       color: #fff;
     }
-  }
+  } */
 `;
 
 export default PostPage;
