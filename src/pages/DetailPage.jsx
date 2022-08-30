@@ -38,33 +38,41 @@ const DetailPage = () => {
       <hr />
       <p>{info.content}</p>
       <ButtonDiv>
-      <button
-        onClick={() => {
-          let input = prompt("비밀번호를 입력하세요.");
-          if (input === info.password) {
-            navigate("/update/" + info.id);
-          } else {
-            alert("비밀번호가 틀렸습니다.");
-          }
-        }}
-      >
-        수정
-      </button>
-      <button
-        onClick={() => {
-          let input = prompt("비밀번호를 입력하세요.");
-          if (input === info.password) {
-            dispatch(deletePost(info.id));
-            navigate("/");
-          } else {
-            alert("비밀번호가 틀렸습니다.");
-          }
-        }}
-      >
-        삭제
-      </button>
-      <button onClick={() => navigate("/post")}>글쓰기</button>
-      <button onClick={() => navigate(-1)}>뒤로가기</button>
+        <button
+          onClick={() => {
+            let input = prompt("비밀번호를 입력하세요.");
+            if (input === info.password) {
+              navigate("/update/" + info.id);
+            } else if (input === null) {
+              alert("취소되었습니다.");
+            } else if (input !== info.password) {
+              alert("비밀번호가 틀렸습니다.");
+            }
+          }}
+        >
+          수정
+        </button>
+        <button
+          onClick={() => {
+            let input = prompt("비밀번호를 입력하세요.");
+            if (input === info.password) {
+              if (window.confirm("게시글을 삭제하시겠습니까?")) {
+                dispatch(deletePost(info.id));
+                navigate("/");
+              } else {
+                alert("취소되었습니다.");
+              }
+            } else if (input === null) {
+              alert("취소되었습니다.");
+            } else if (input !== info.password) {
+              alert("비밀번호가 틀렸습니다.");
+            }
+          }}
+        >
+          삭제
+        </button>
+        <button onClick={() => navigate("/post")}>글쓰기</button>
+        <button onClick={() => navigate(-1)}>뒤로가기</button>
       </ButtonDiv>
     </DetailPageWrapper>
   );

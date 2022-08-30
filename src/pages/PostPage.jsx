@@ -50,18 +50,38 @@ const PostPage = () => {
       <ButtonDiv>
         <button
           onClick={() => {
-            dispatch(
-              addPost({
-                id: v4(),
-                nickname: nickname.current.value,
-                password: content.current.value,
-                title: title.current.value,
-                content: content.current.value,
-                date: post_time,
-                ip: userIp,
-              })
-            );
-            navigate("/");
+            if (nickname.current.value === "") {
+              alert("닉네임을 입력하세요.");
+              nickname.current.focus();
+            } else if (password.current.value === "") {
+              alert("비밀번호를 입력하세요.");
+              password.current.focus();
+            } else if (title.current.value === "") {
+              alert("제목을 입력하세요.");
+              title.current.focus();
+            } else if (content.current.value === "") {
+              alert("내용을 입력하세요.");
+              content.current.focus();
+            } else if (password.current.value.length < 4) {
+              alert("비밀번호는 최소 4자리 이상 입력해주세요.");
+              password.current.focus();
+            } else if (title.current.value.length < 2) {
+              alert("제목은 최소 2자 이상 입력해주세요.");
+              title.current.focus();
+            } else {
+              dispatch(
+                addPost({
+                  id: v4(),
+                  nickname: nickname.current.value,
+                  password: content.current.value,
+                  title: title.current.value,
+                  content: content.current.value,
+                  date: post_time,
+                  ip: userIp,
+                })
+              );
+              navigate("/");
+            }
           }}
         >
           글 게시

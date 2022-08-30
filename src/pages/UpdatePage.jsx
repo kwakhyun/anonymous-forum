@@ -41,19 +41,36 @@ const UpdatePage = () => {
       <ButtonDiv>
         <button
           onClick={() => {
-            dispatch(
-              updatePost({
-                ...info,
-                title: title.current.value,
-                content: content.current.value,
-              })
-            );
-            navigate("/");
+            if (title.current.value === "") {
+              alert("제목을 입력해주세요.");
+              title.current.focus();
+            } else if (content.current.value === "") {
+              alert("내용을 입력해주세요.");
+              content.current.focus();
+            } else if (title.current.value.length < 2) {
+              alert("제목은 최소 2자 이상 입력해주세요.");
+              title.current.focus();
+            } else {
+              dispatch(
+                updatePost({
+                  ...info,
+                  title: title.current.value,
+                  content: content.current.value,
+                })
+              );
+              navigate("/");
+            }
           }}
         >
           등록
         </button>
-        <button onClick={() => navigate(-1)}>취소</button>
+        <button
+          onClick={() => {
+            if (window.confirm("수정을 취소하시겠습니까?")) navigate(-1);
+          }}
+        >
+          취소
+        </button>
       </ButtonDiv>
     </UpdatePageStyle>
   );
