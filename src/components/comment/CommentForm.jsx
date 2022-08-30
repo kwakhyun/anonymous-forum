@@ -1,15 +1,17 @@
 import { Button } from "@mui/material";
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import styled from "styled-components";
 import { v4 } from "uuid";
 import { postComment } from "../../redux/modules/commentSlice";
+import { MainButton } from "../mainButton";
 
-const CommentForm = () => {
+const CommentForm = ({ formData }) => {
+  const [ip, setIp] = useState();
   const { id, list } = useSelector((state) => state.comment);
-  const [form, setForm] = useState({ nickname: "", password: "", content: "" });
+  const [form, setForm] = useState(formData);
 
   const dispatch = useDispatch();
 
@@ -29,6 +31,15 @@ const CommentForm = () => {
     });
   };
 
+  const getIp = async () => {
+    const { data } = await axios.get("https://api.ipify.org?format=json");
+    setIp(data.ip.split(".").slice(0, 2).join("."));
+  };
+
+  useEffect(() => {
+    getIp();
+  });
+
   const handlePutComment = async () => {
     if (!form.nickname || !form.password || !form.content) {
       return alert("채워주세요.");
@@ -42,6 +53,7 @@ const CommentForm = () => {
     if (newList) {
       newList.push({
         id: v4(),
+        ip: ip,
         comment: form.content,
         nickname: form.nickname,
         password: form.password,
@@ -80,12 +92,17 @@ const CommentForm = () => {
         />
       </DivText>
       <DivContent>
-        <textarea ref={contentRef} onChange={onChange} />
+        <textarea ref={contentRef} placeholder="내용" onChange={onChange} />
       </DivContent>
 
-      <Button type="button" onClick={handlePutComment}>
-        댓글 달기
-      </Button>
+      <MainButton
+        type="button"
+        onClick={handlePutComment}
+        width="150px"
+        height="100px"
+      >
+        등록
+      </MainButton>
     </Form>
   );
 };
@@ -97,10 +114,10 @@ const Form = styled.form`
   height: 100px;
   border: 1px solid black;
   display: flex;
-  background-color: #ddd;
+
   border: none;
-  border-top: 3px solid blue;
-  border-bottom: 3px solid blue;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
   padding: 10px 0;
 `;
 
@@ -113,12 +130,17 @@ const DivText = styled.div`
   align-items: center;
   width: 200px;
   padding: 0 10px;
+
+  input {
+    border-radius: 4px;
+    border: 1px solid #888;
+  }
 `;
 
 const DivContent = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: auto;
+  margin: 0 auto;
   width: 100%;
   textarea {
     height: 100px;

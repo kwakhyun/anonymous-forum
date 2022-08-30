@@ -11,6 +11,7 @@ const CommentList = () => {
         list.map((comment) => {
           return <CommentCard key={comment.id} comment={comment} />;
         })}
+      {!list && <div>댓글이 없습니다.</div>}
     </Div>
   );
 };
@@ -20,9 +21,9 @@ const Div = styled.div`
   margin-top: 10px;
   min-width: 800px;
   max-width: 1200px;
-  border: none;
-  border-top: 2px solid blue;
-  border-bottom: 2px solid blue;
+
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 `;
 
 export default CommentList;
