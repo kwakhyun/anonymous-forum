@@ -16,6 +16,7 @@ const CommentCard = ({ comment }) => {
       list: newList,
     });
     dispatch(deleteComment({ list: newList }));
+    setDeleteModalHide(false);
   };
 
   const [editFormHide, setEditFormHide] = useState(true);
@@ -77,7 +78,7 @@ const CommentCard = ({ comment }) => {
 const DivComment = styled.div`
   width: 100%;
   border: 1px solid black;
-  height: 100px;
+  height: 50px;
   display: flex;
   border: none;
   border-bottom: 1px solid grey;

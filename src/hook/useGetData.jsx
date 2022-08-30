@@ -18,7 +18,7 @@ const useGetData = async (table, id) => {
       await axios
         .get(url)
         .then((res) => setValue(res.data))
-        .catch(() => console.log("불러오지 못했습니다."));
+        .catch(() => setValue({ id: id, list: [] }));
     };
     getData();
   }, [url]);
