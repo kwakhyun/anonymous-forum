@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 /**
  * postId : "고유 값"
@@ -21,7 +20,7 @@ const useGetData = async (table, id) => {
         .catch(() => setValue({ id: id, list: [] }));
     };
     getData();
-  }, [url]);
+  }, [url, id]);
 
   return value;
 };
