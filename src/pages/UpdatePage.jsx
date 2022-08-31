@@ -61,8 +61,9 @@ const UpdatePage = () => {
                     title: title.current.value,
                     content: content.current.value,
                   })
-                );
-                navigate("/");
+                ).then(() => {
+                  navigate("/");
+                });
               }
             }}
           >
