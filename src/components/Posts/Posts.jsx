@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Posts = ({ post, postNum }) => {
   const { id, nickname, ip, date, title } = post;
   const navigate = useNavigate();
-  const goToDeatil = () => {
+  const goToDetail = () => {
     navigate(`/detail/${id}`);
   };
 
@@ -18,7 +18,7 @@ const Posts = ({ post, postNum }) => {
   );
 
   return (
-    <PostContainer onClick={goToDeatil}>
+    <PostContainer onClick={goToDetail}>
       <PostId>{postNum}</PostId>
       <PostTitle>{title}</PostTitle>
       <PostNickname>
