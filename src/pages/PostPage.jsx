@@ -75,18 +75,19 @@ const PostPage = () => {
                   ip: userIp,
                 };
 
-                axios.post("http://localhost:3001/comments", {
+                axios.post(`${process.env.REACT_APP_URL}/comments`, {
                   id: id,
                   list: [],
                 });
-                dispatch(addPost(data));
-                dispatch(
-                  postComment({
-                    id: id,
-                    list: [],
-                  })
-                );
-                navigate("/");
+                dispatch(addPost(data)).then(() => {
+                  dispatch(
+                    postComment({
+                      id: id,
+                      list: [],
+                    })
+                  );
+                  navigate("/");
+                });
               }
             }}
           >
@@ -103,6 +104,8 @@ const PostPageStyle = styled.div`
   width: 80%;
   margin: 0 auto;
   margin-top: 50px;
+  min-width: 500px;
+  max-width: 800px;
   input {
     width: 100%;
     height: 30px;

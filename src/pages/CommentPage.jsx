@@ -5,15 +5,13 @@ import { useGetData } from "../hook";
 import { postComment } from "../redux/modules/commentSlice";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Header } from "../components/Header";
 
 const CommentPage = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const data = useGetData("comments", id);
+  const param = useParams().id;
+  const data = useGetData("comments", param);
   const formData = { nickname: "", password: "", content: "" };
 
-  console.log(id);
   useEffect(() => {
     data.then((res) => {
       dispatch(postComment({ id: res.id, list: res?.list }));
@@ -22,9 +20,8 @@ const CommentPage = () => {
 
   return (
     <DivPage>
-      <Header />
-      <CommentForm formData={formData} />
       <CommentList />
+      <CommentForm formData={formData} />
     </DivPage>
   );
 };
@@ -36,6 +33,7 @@ const DivPage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 `;
 
 export default CommentPage;

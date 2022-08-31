@@ -61,8 +61,9 @@ const UpdatePage = () => {
                     title: title.current.value,
                     content: content.current.value,
                   })
-                );
-                navigate("/");
+                ).then(() => {
+                  navigate("/");
+                });
               }
             }}
           >
@@ -85,6 +86,8 @@ const UpdatePageStyle = styled.div`
   width: 80%;
   margin: 0 auto;
   margin-top: 50px;
+  min-width: 500px;
+  max-width: 800px;
   input {
     width: 100%;
     height: 30px;

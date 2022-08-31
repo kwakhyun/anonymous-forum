@@ -1,4 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const deleteComment = createAsyncThunk("DELETE_COMMENT", async (id) => {
+  await axios.delete(`${process.env.REACT_APP_URL}/comments/` + id);
+});
 
 const commentSlice = createSlice({
   name: "comment",

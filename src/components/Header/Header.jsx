@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../mainButton/MainButton";
-// import { img_home } from "../../../public/home_icon.png";
-// import img_home from "";
 import img_home from "./home_icon.png";
 
 const Header = () => {
@@ -23,7 +21,7 @@ const Header = () => {
     <div>
       <HeaderContainer>
         <HomeImg src={img_home} onClick={goToHome} />
-        <Title>유머 게시판</Title>
+        <Title>모두의 게시판</Title>
         <MainButton
           width="6em"
           onClick={goToPost}
@@ -47,6 +45,8 @@ const HeaderContainer = styled.div`
   align-items: center;
   padding: 0 1em 0 1em;
   border-bottom: 2px solid grey;
+  background-color: #fff;
+  z-index: 1;
 `;
 
 const Empty = styled.div`
