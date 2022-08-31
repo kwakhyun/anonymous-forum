@@ -71,8 +71,8 @@ const MainPage = () => {
       <MainPageContainer>
         <Header />
         <Sort>
-          <SortMenu onClick={sortNew}>최신 순</SortMenu> |
-          <SortMenu onClick={sortOld}>오래된 순</SortMenu>
+          <SortMenu onClick={sortNew}>최신 순 |</SortMenu>
+          <SortMenu onClick={sortOld}> 오래된 순</SortMenu>
         </Sort>
         <PostsContainer>
           <PostList>
