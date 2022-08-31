@@ -65,21 +65,23 @@ const PostPage = () => {
                 title.current.focus();
               } else {
                 let id = v4();
-                const data = {
-                  id: id,
-                  nickname: nickname.current.value,
-                  password: content.current.value,
-                  title: title.current.value,
-                  content: content.current.value,
-                  date: time,
-                  ip: userIp,
-                };
 
-                axios.post(`${process.env.REACT_APP_URL}/comments`, {
-                  id: id,
-                  list: [],
-                });
-                dispatch(addPost(data)).then(() => {
+                dispatch(
+                  addPost({
+                    id: id,
+                    nickname: nickname.current.value,
+                    password: password.current.value,
+                    title: title.current.value,
+                    content: content.current.value,
+                    date: time,
+                    ip: userIp,
+                  })
+                ).then(() => {
+                  axios.post(`${process.env.REACT_APP_URL}/comments`, {
+                    id: id,
+                    list: [],
+                  });
+
                   dispatch(
                     postComment({
                       id: id,
