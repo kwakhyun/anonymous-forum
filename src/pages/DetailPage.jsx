@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deletePost } from "../redux/modules/postSlice";
+import { deletePost, getPost } from "../redux/modules/postSlice";
 import { deleteComment } from "../redux/modules/commentSlice";
 import styled from "styled-components";
 import Header from "../components/Header/Header";
@@ -15,7 +15,10 @@ const DetailPage = () => {
   const posts = useSelector((state) => state.post.posts);
   const dispatch = useDispatch();
 
-  /* 포스트 정보 가져오기 */
+  useEffect(() => {
+    dispatch(getPost());
+  }, [dispatch]);
+
   const info = posts.reduce((acc, cur, idx) => {
     if (cur.id === params.id) {
       acc.num = idx + 1;
