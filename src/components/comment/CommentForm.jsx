@@ -63,7 +63,7 @@ const CommentForm = ({ formData }) => {
     }
 
     await axios
-      .put(`http://localhost:3001/comments/${id}`, {
+      .put(`${process.env.REACT_APP_URL}/comments/${id}`, {
         list: newList,
       })
       .then(() => {

@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deletePost } from "../redux/modules/postSlice";
+import { deleteComment } from "../redux/modules/commentSlice";
 import styled from "styled-components";
 import Header from "../components/Header/Header";
 import Button from "../components/mainButton/MainButton";
@@ -60,8 +61,10 @@ const DetailPage = () => {
               let input = prompt("비밀번호를 입력하세요.");
               if (input === info.password) {
                 if (window.confirm("게시글을 삭제하시겠습니까?")) {
-                  dispatch(deletePost(info.id));
-                  navigate("/");
+                  dispatch(deletePost(info.id)).then(() => {
+                    dispatch(deleteComment(info.id));
+                    navigate("/");
+                  });
                 } else {
                   alert("취소되었습니다.");
                 }

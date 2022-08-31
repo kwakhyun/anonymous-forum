@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../mainButton/MainButton";
-// import { img_home } from "../../../public/home_icon.png";
-// import img_home from "";
 import img_home from "./home_icon.png";
 
 const Header = () => {

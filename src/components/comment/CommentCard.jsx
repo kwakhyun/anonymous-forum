@@ -17,7 +17,7 @@ const CommentCard = ({ comment }) => {
 
   const handleDeleteComment = async () => {
     const newList = list.filter((v) => v.id !== comment.id);
-    await axios.put(`http://localhost:3001/comments/${id}`, {
+    await axios.put(`${process.env.REACT_APP_URL}/comments/${id}`, {
       list: newList,
     });
     dispatch(editComment({ list: newList }));
@@ -49,7 +49,7 @@ const CommentCard = ({ comment }) => {
     const newList = list.map((v) => (v.id === comment.id ? edit : v));
     console.log(newList);
     await axios
-      .put(`http://localhost:3001/comments/${id}`, {
+      .put(`${process.env.REACT_APP_URL}/comments/${id}`, {
         list: newList,
       })
       .then(() => {

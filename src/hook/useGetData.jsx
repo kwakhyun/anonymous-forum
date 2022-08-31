@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
  * content : "내용"
  */
 const useGetData = async (table, id) => {
-  const [url, setUrl] = useState(`http://localhost:3001/${table}/${id}`);
+  const [url, setUrl] = useState(`${process.env.REACT_APP_URL}/${table}/${id}`);
   const [value, setValue] = useState("");
 
   useEffect(() => {
