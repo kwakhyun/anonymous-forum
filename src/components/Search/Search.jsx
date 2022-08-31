@@ -18,7 +18,7 @@ const Search = ({ searchPost }) => {
   };
 
   const info = () => {
-    if (inputRef.current.value === "") {
+    if (inputRef.current.value.trim() === "") {
       setInfoText(true);
       setTimeout(() => {
         setInfoText(false);
@@ -29,7 +29,8 @@ const Search = ({ searchPost }) => {
   };
 
   const onSearch = () => {
-    // info();
+    info();
+    console.log("search , onSearch >> ", search);
     searchPost(search);
   };
 
@@ -38,6 +39,7 @@ const Search = ({ searchPost }) => {
     function logKey(event) {
       if (event.code === "Enter") {
         info();
+        console.log("search , onEnter >> ", search);
         searchPost(search);
       }
     }
@@ -63,20 +65,19 @@ const Search = ({ searchPost }) => {
   );
 };
 
-const Span = styled.div`
-  /* width: 50%; */
-  color: red;
-  display: ${(props) => props.text};
-  position: absolute;
-  bottom: 3em;
-`;
-
 const SearchContainer = styled.div`
   display: flex;
   width: 50%;
   margin-top: 2em;
   margin-bottom: 0.5em;
   bottom: 0;
+`;
+
+const Span = styled.div`
+  color: red;
+  display: ${(props) => props.text};
+  position: absolute;
+  bottom: 4em;
 `;
 
 const SearchSelect = styled.select`
