@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MainButton from "../mainButton/MainButton";
 // import { img_home } from "../../../public/home_icon.png";
 // import img_home from "";
@@ -9,13 +9,13 @@ import img_home from "./home_icon.png";
 const Header = () => {
   const navigate = useNavigate();
 
+  const pathname = window.location.pathname;
+
   const goToPost = () => {
     navigate("/post");
   };
 
-  // TODO: 새로고침하는 방식 말고 부모만 렌더링되게
   const goToHome = () => {
-    // navigate("/");
     window.location.replace("/");
   };
 
@@ -24,7 +24,12 @@ const Header = () => {
       <HeaderContainer>
         <HomeImg src={img_home} onClick={goToHome} />
         <Title>유머 게시판</Title>
-        <MainButton width="6em" onClick={goToPost} children="새 글 작성" />
+        <MainButton
+          width="6em"
+          onClick={goToPost}
+          children="새 글 작성"
+          display={pathname === "/" ? "block" : "none"}
+        />
       </HeaderContainer>
       <Empty></Empty>
     </div>
@@ -48,7 +53,12 @@ const Empty = styled.div`
   height: 80px;
 `;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  /* width: 100%; */
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+`;
 
 const HomeImg = styled.img`
   height: 3em;

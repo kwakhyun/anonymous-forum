@@ -22,6 +22,7 @@ const Button = styled.button`
   font-size: ${(props) => props.fontSize || "20px"};
   font-weight: bold;
   color: ${(props) => props.color || "black"};
+  display: ${(props) => props.display};
   cursor: pointer;
   &:hover {
     background-color: #000;
