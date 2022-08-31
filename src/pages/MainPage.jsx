@@ -4,14 +4,13 @@ import { Posts } from "../components/Posts";
 import { Search } from "../components/Search";
 import { useSelector, useDispatch } from "react-redux";
 import { getPost } from "../redux/modules/postSlice";
-// import { useGetData } from "../hook";
 import styled from "styled-components";
 
 const MainPage = () => {
   const postList = useSelector((store) => store.post.posts);
   const [searched, setSearched] = useState();
   const dispatch = useDispatch();
-  // let refresh = 0;
+  let emptyList = "";
 
   useEffect(() => {
     dispatch(getPost());
@@ -19,7 +18,6 @@ const MainPage = () => {
 
   useEffect(() => {
     setSearched(postList);
-    // refresh = 0;
   }, [postList]);
 
   const searchPost = (search) => {
@@ -63,6 +61,11 @@ const MainPage = () => {
     );
   };
 
+  console.log("searched >", searched);
+  if (Array.isArray(searched) && searched.length === 0) {
+    emptyList = "검색 결과가 없습니다.";
+  }
+
   return (
     <MainPageLayout>
       <MainPageContainer>
@@ -77,6 +80,7 @@ const MainPage = () => {
               searched.map((post, idx) => {
                 return <Posts post={post} key={post.id} postNum={idx + 1} />;
               })}
+            {emptyList}
           </PostList>
         </PostsContainer>
         <SearchBox>
