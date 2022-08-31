@@ -49,18 +49,11 @@ const Div = styled.div`
   margin-top: 10px;
   min-width: 800px;
   max-width: 1200px;
-
   border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-
-  root {
-    margin: auto;
-  }
 `;
 
 export default CommentList;

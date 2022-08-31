@@ -23,7 +23,7 @@ const Header = () => {
     <div>
       <HeaderContainer>
         <HomeImg src={img_home} onClick={goToHome} />
-        <Title>유머 게시판</Title>
+        <Title>모두의 게시판</Title>
         <MainButton
           width="6em"
           onClick={goToPost}
@@ -47,6 +47,8 @@ const HeaderContainer = styled.div`
   align-items: center;
   padding: 0 1em 0 1em;
   border-bottom: 2px solid grey;
+  background-color: #fff;
+  z-index: 1;
 `;
 
 const Empty = styled.div`
