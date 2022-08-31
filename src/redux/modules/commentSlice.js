@@ -11,7 +11,7 @@ const commentSlice = createSlice({
       state.id = action.payload.id;
       state.list = action.payload.list;
     },
-    deleteComment: (state, action) => {
+    editComment: (state, action) => {
       state.list = action.payload.list;
     },
   },
@@ -19,4 +19,4 @@ const commentSlice = createSlice({
 
 export default commentSlice.reducer;
 
-export const { postComment, deleteComment } = commentSlice.actions;
+export const { postComment, editComment } = commentSlice.actions;

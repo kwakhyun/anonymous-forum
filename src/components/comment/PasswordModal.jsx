@@ -13,27 +13,40 @@ const PasswordModal = ({ comment, children, onClick, onHide }) => {
     }
   };
 
+  const handleHideModal = () => {
+    onHide();
+  };
+
   return (
     <Form>
-      <MainButton
-        type="button"
-        width="50px"
-        height="50px"
-        onClick={() => onHide()}
-      >
-        X
-      </MainButton>
       <input type="password" placeholder="비밀번호" ref={inputRef} />
-      <MainButton type="button" width="100px" onClick={handlerCheckPassword}>
-        {children}
-      </MainButton>
+      <DivButton>
+        <MainButton
+          type="button"
+          width="50px"
+          height="20px"
+          fontSize="1em"
+          onClick={handlerCheckPassword}
+        >
+          {children}
+        </MainButton>
+        <MainButton
+          type="button"
+          width="50px"
+          height="20px"
+          fontSize="1em"
+          onClick={() => handleHideModal()}
+        >
+          닫기
+        </MainButton>
+      </DivButton>
     </Form>
   );
 };
 
-const Form = styled.div`
+const Form = styled.form`
   width: 200px;
-  height: 100px;
+  height: 50px;
   position: absolute;
   border-radius: 4px;
   border: 1px solid black;
@@ -48,11 +61,15 @@ const Form = styled.div`
   input {
     width: 80%;
   }
-
-  button {
-    width: 20px;
-    height: 20px;
-  }
 `;
 
+const DivButton = styled.div`
+  width: 80%;
+  height: 50px;
+  margin: 5px -5px 0px 0px;
+  text-align: right;
+  button {
+    margin-left: 5px;
+  }
+`;
 export default PasswordModal;
