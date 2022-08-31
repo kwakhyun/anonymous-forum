@@ -164,9 +164,10 @@ const DivInputForm = styled.form``;
 const DivButton = styled.div`
   height: 100%;
   display: flex;
-
   button {
-    height: 100%;
+    width: 40px;
+    height: 20px;
+    font-size: 12px;
   }
 `;
 

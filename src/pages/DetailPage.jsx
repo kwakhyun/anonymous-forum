@@ -87,6 +87,8 @@ const DetailPageWrapper = styled.div`
   width: 80%;
   margin: 0 auto;
   margin-top: 50px;
+  min-width: 500px;
+  max-width: 800px;
   span {
     font-size: 1.5rem;
     font-weight: bold;

@@ -75,61 +75,65 @@ const CommentForm = ({ formData }) => {
   };
   return (
     <Form>
-      <DivText>
-        <input
-          placeholder="닉네임"
-          name="nickname"
-          type="text"
-          ref={nicknameRef}
-          onChange={onChange}
-        />
-        <input
-          type="password"
-          placeholder="비밀번호"
-          ref={passwordRef}
-          onChange={onChange}
-        />
-      </DivText>
-      <DivContent>
-        <textarea ref={contentRef} placeholder="내용" onChange={onChange} />
-      </DivContent>
-
-      <MainButton
-        type="button"
-        onClick={handlePutComment}
-        width="150px"
-        height="100px"
-      >
-        등록
-      </MainButton>
+      <Div>
+        <DivText>
+          <input
+            placeholder="닉네임"
+            name="nickname"
+            type="text"
+            ref={nicknameRef}
+            onChange={onChange}
+          />
+          <input
+            type="password"
+            placeholder="비밀번호"
+            ref={passwordRef}
+            onChange={onChange}
+          />
+        </DivText>
+        <DivContent>
+          <textarea ref={contentRef} placeholder="내용" onChange={onChange} />
+        </DivContent>
+      </Div>
+      <ButtonDiv>
+        <MainButton
+          type="button"
+          onClick={handlePutComment}
+          width="150px"
+          height="100px"
+        >
+          등록
+        </MainButton>
+      </ButtonDiv>
     </Form>
   );
 };
 
 const Form = styled.form`
+  border: none;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  padding: 20px;
+  background-color: #f5f5f5;
+  margin-top: 50px;
+  margin-bottom: 200px;
+`;
+
+const Div = styled.div`
+  display: flex;
   width: 80%;
   min-width: 800px;
   max-width: 1200px;
   height: 100px;
-  border: 1px solid black;
-  display: flex;
-
-  border: none;
-  border-top: 3px solid black;
-  border-bottom: 3px solid black;
-  padding: 10px 0;
 `;
 
 const DivText = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto 0;
-  height: 50%;
-  justify-content: space-between;
-  align-items: center;
+  height: 100%;
   width: 200px;
   padding: 0 10px;
-
   input {
     border-radius: 4px;
     border: 1px solid #888;
@@ -145,6 +149,18 @@ const DivContent = styled.div`
     height: 100px;
     margin-left: auto;
     width: 100%;
+  }
+`;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 10px;
+  button {
+    width: 90px;
+    height: 30px;
+    font-size: 14px;
   }
 `;
 
