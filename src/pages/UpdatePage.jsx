@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { updatePost } from "../redux/modules/postSlice";
+import { updatePost, getPost } from "../redux/modules/postSlice";
 import styled from "styled-components";
 import Header from "../components/Header/Header";
 import Button from "../components/mainButton/MainButton";
@@ -15,6 +15,10 @@ const UpdatePage = () => {
 
   const posts = useSelector((state) => state.post.posts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPost());
+  }, [dispatch]);
 
   const info = posts.reduce((acc, cur, idx) => {
     if (cur.id === params.id) {
