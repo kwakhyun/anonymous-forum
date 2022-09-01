@@ -1,19 +1,30 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { editComment } from "../../redux/modules/commentSlice";
+import {
+  editComment,
+  updateComment,
+  deleteComment,
+  getComment,
+} from "../../redux/modules/commentSlice";
+import { useGetTime } from "../../hook/useGetTime";
 import { MainButton } from "../mainButton";
 import PasswordModal from "./PasswordModal";
 
 const CommentCard = ({ comment }) => {
+  const time = useGetTime();
   const [editFormHide, setEditFormHide] = useState(true);
   const [deleteModalHide, setDeleteModalHide] = useState(true);
   const [editModalHide, setEditModalHide] = useState(true);
 
   const [content, setContent] = useState(comment.comment);
-  const dispatch = useDispatch();
   const { id, list } = useSelector((state) => state.comment);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getComment(id));
+  // }, [dispatch, id]);
 
   const handleDeleteComment = async () => {
     const newList = list.filter((v) => v.id !== comment.id);
@@ -34,20 +45,18 @@ const CommentCard = ({ comment }) => {
   };
 
   const handleEditComment = async () => {
-    let date = new Date();
-    let year = date.getFullYear();
-    let month = ("0" + (1 + date.getMonth())).slice(-2);
-    let day = ("0" + date.getDate()).slice(-2);
     const edit = {
       id: comment.id,
       ip: comment.ip,
       comment: content,
       nickname: comment.nickname,
       password: comment.password,
-      date: `${year}년 ${month}월 ${day}일`,
+      date: time,
     };
+    
     const newList = list.map((v) => (v.id === comment.id ? edit : v));
     console.log(newList);
+
     await axios
       .put(`${process.env.REACT_APP_URL}/comments/${id}`, {
         list: newList,
@@ -96,6 +105,9 @@ const CommentCard = ({ comment }) => {
                   onHide={() => setDeleteModalHide(true)}
                   comment={comment}
                   onClick={() => handleDeleteComment(id)}
+                  // onClick={() => {
+                  //   dispatch(deleteComment(comment.id));
+                  // }}
                 >
                   삭제
                 </PasswordModal>
@@ -121,7 +133,14 @@ const CommentCard = ({ comment }) => {
 
           <DivButton>
             <DivRelative>
-              <MainButton onClick={() => handleEditComment()}>수정</MainButton>
+              <MainButton
+                onClick={() => handleEditComment()}
+                // onClick={() => {
+                //   dispatch(updateComment(comment));
+                // }}
+              >
+                수정
+              </MainButton>
             </DivRelative>
             <DivRelative>
               <MainButton onClick={() => handleEditModeClear()}>
