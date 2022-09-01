@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetTime } from "../hook/useGetTime";
+import { useGetTime } from "../../hook/useGetTime";
 import styled from "styled-components";
 import { v4 } from "uuid";
 import { postComment } from "../../redux/modules/commentSlice";

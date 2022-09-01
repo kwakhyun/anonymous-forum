@@ -61,7 +61,6 @@ const MainPage = () => {
     );
   };
 
-  console.log("searched >", searched);
   if (Array.isArray(searched) && searched.length === 0) {
     emptyList = "검색 결과가 없습니다.";
   }

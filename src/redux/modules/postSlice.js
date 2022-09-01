@@ -3,7 +3,12 @@ import axios from "axios";
 
 export const getPost = createAsyncThunk("GET_POST", async () => {
   const response = await axios.get(`${process.env.REACT_APP_URL}/posts`);
-  return response.data;
+
+  if (response.status !== 200) {
+    alert("게시글을 불러오는데 실패했습니다.");
+  } else {
+    return response.data;
+  }
 });
 
 export const addPost = createAsyncThunk("ADD_POST", async (post) => {
