@@ -11,6 +11,7 @@ import Button from "../components/mainButton/MainButton";
 import { postComment } from "../redux/modules/commentSlice";
 
 const PostPage = () => {
+  const id = v4();
   const title = useRef(null);
   const content = useRef(null);
   const nickname = useRef(null);
@@ -64,19 +65,17 @@ const PostPage = () => {
                 alert("제목은 최소 2자 이상 입력해주세요.");
                 title.current.focus();
               } else {
-                let id = v4();
+                const postData = {
+                  id: id,
+                  nickname: nickname.current.value,
+                  password: password.current.value,
+                  title: title.current.value,
+                  content: content.current.value,
+                  date: time,
+                  ip: userIp,
+                };
 
-                dispatch(
-                  addPost({
-                    id: id,
-                    nickname: nickname.current.value,
-                    password: password.current.value,
-                    title: title.current.value,
-                    content: content.current.value,
-                    date: time,
-                    ip: userIp,
-                  })
-                ).then(() => {
+                dispatch(addPost(postData)).then(() => {
                   axios.post(`${process.env.REACT_APP_URL}/comments`, {
                     id: id,
                     list: [],
@@ -88,6 +87,7 @@ const PostPage = () => {
                       list: [],
                     })
                   );
+
                   navigate("/");
                 });
               }
