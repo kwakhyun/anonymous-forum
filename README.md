@@ -1,13 +1,33 @@
-## Notice Board React App
+## Bulletin Board React App
 
-- 프로젝트 배포 URL
+```json
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
+    "axios": "^0.27.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "redux-devtools-extension": "^2.13.9",
+    "styled-components": "^5.3.5"
+  },
+```
 
-  - https://notice-board-tan.vercel.app/
+### 프로젝트 배포 URL
+- https://notice-board-tan.vercel.app
 
-- Heroku에 JSON API 서버를 배포했습니다.
+### API 정보
+- https://www.notion.so/9a1bb90e71f94dc0a1dea2314464bd45?v=27f82362ff3f45598c49e26e5d73a3cf
 
-  - https://www.heroku.com/
+### API 서버로 사용한 클라우드 서비스 (PaaS)
+- https://www.heroku.com
+<br>
 
-  ![화면 캡처 2022-09-01 020544](https://user-images.githubusercontent.com/73919235/187738273-575ac40d-aaf6-43c5-87f4-f6194bd437af.png)
+### 메인 페이지
 
-  ![화면 캡처 2022-09-01 020647](https://user-images.githubusercontent.com/73919235/187738282-4ea8e52e-a71b-412a-aa51-160a7d5e372a.png)
+![화면 캡처 2022-09-02 055607](https://user-images.githubusercontent.com/73919235/188019203-c8a8de16-4245-424a-b62f-2a1381fad97e.png)
+
+### 상세 페이지
+
+![화면 캡처 2022-09-02 055811](https://user-images.githubusercontent.com/73919235/188019212-655c65a8-2157-44c4-9d1e-e28a0c7fdac1.png)
