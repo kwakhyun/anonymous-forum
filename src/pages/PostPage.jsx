@@ -59,10 +59,10 @@ const PostPage = () => {
                 alert("내용을 입력하세요.");
                 content.current.focus();
               } else if (password.current.value.length < 4) {
-                alert("비밀번호는 최소 4자리 이상 입력해주세요.");
+                alert("비밀번호는 최소 4자리 이상 입력해 주세요.");
                 password.current.focus();
               } else if (title.current.value.length < 2) {
-                alert("제목은 최소 2자 이상 입력해주세요.");
+                alert("제목은 최소 2자 이상 입력해 주세요.");
                 title.current.focus();
               } else {
                 const postData = {

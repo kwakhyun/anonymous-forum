@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useGetTime } from "../hook/useGetTime";
 import styled from "styled-components";
 import { v4 } from "uuid";
 import { postComment } from "../../redux/modules/commentSlice";
 import { MainButton } from "../mainButton";
 
 const CommentForm = ({ formData }) => {
+  const time = useGetTime();
   const [ip, setIp] = useState();
   const { id, list } = useSelector((state) => state.comment);
   const [form, setForm] = useState(formData);
@@ -41,14 +42,11 @@ const CommentForm = ({ formData }) => {
 
   const handlePutComment = async () => {
     if (!form.nickname || !form.password || !form.content) {
-      return alert("채워주세요.");
+      return alert("빈칸을 모두 입력해 주세요.");
     }
 
     const newList = list ? [...list] : [];
-    let date = new Date();
-    let year = date.getFullYear();
-    let month = ("0" + (1 + date.getMonth())).slice(-2);
-    let day = ("0" + date.getDate()).slice(-2);
+
     if (newList) {
       newList.push({
         id: v4(),
@@ -56,7 +54,7 @@ const CommentForm = ({ formData }) => {
         comment: form.content,
         nickname: form.nickname,
         password: form.password,
-        date: `${year}년 ${month}월 ${day}일`,
+        date: time,
       });
     } else {
       return;

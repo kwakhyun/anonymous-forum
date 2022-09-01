@@ -4,7 +4,7 @@ import { CommentForm, CommentList } from "../components";
 import { useGetData } from "../hook";
 import { postComment } from "../redux/modules/commentSlice";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const CommentPage = () => {
   const dispatch = useDispatch();
