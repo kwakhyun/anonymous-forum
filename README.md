@@ -1,4 +1,4 @@
-## Bulletin Board React App
+## Anonymous Forum
 
 ```json
   "dependencies": {
