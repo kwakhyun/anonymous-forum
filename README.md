@@ -1,5 +1,5 @@
 ## 모두의 게시판
-![하얀색 배경 노트와 펜 일러스트 트래블 블로그 로고디자인](https://user-images.githubusercontent.com/73919235/193266863-8074b38a-13fc-40da-96ab-91c182051e6d.png)
+<img src="https://user-images.githubusercontent.com/73919235/193266863-8074b38a-13fc-40da-96ab-91c182051e6d.png" width="300px" />
 
 ### 프로젝트 배포 URL
 - https://notice-board-tan.vercel.app
